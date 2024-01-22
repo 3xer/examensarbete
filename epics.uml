@@ -1,0 +1,88 @@
+package "frontend" {
+note right of [gamemanager]{
+updates the backend of your game status 
+and gives you information from the backend
+}
+
+[gamemanager] <-- [followerCounter]
+
+note left of [followerCounter]{
+simple counter that displays your current amount 
+of followers 
+}
+
+[followerCounter] <-- [clickbutton]
+
+note right of [clickbutton]{
+    the button the game is centerd around 
+    click this to create content and possibly 
+    get more followers to progress in the game
+    there is a delay between every click that can 
+    be decreased with upgrades
+}
+
+[clickbutton] <-- [followersPerClick]
+
+note right of [followersPerClick]{
+    displays how many followers that is possible to
+    get from pressing the clickbutton
+}
+
+[followerCounter] <-- [passiveFollowerIncrease]
+
+note left of passiveFollowerIncrease{
+    this displays the range of how many followers
+    you can get passively (every secound)
+}
+
+[followersPerClick] <--> [upgrades]
+[passiveFollowerIncrease] <--> [upgrades]
+note right of [upgrades]{
+    a list of different upgrades that help you progress faster
+}
+[upgrades] <-- [clickDelay]
+note bottom of [clickDelay]{
+invest in this upgrade to decrease the delay 
+between each click
+}
+[upgrades] <-- [followerGain]
+note bottom of [followerGain]{
+increases the quality of your new content to get 
+more people to watch and follow increases both 
+passiveFollowerIncrease and followersPerClick
+}
+[upgrades] <-- [genreDiversity]
+note bottom of [genreDiversity] {
+You can choose to invest in different genres that 
+will change how you gain followers depending on
+how different communities online consume content.
+This will also change the ages reached by your 
+content.
+}
+upgrades <-- [agediversity]
+note bottom of [agediversity]{
+Invest is to find what different genres
+are most popular in what ages to know 
+what genres to invest in to reach more 
+diverse aged people faster.
+}
+
+}
+package "backend"{
+database "database"{
+    [username]
+    [fastestCompletionTime]
+    [orderOfChoises]
+}
+frame "logic"{
+ note left of [strategyRecorder]{
+    takes each choice you make in game and saves it to the database
+ }
+ note right of [algorithmFavor]{
+    takes your current genres and ages to
+    calculate how favorable it is for the 
+    platform to promote and recommend
+ }
+}
+[gamemanager] -> backend
+}

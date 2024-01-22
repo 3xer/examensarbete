@@ -1,0 +1,109 @@
+package "frontend"{
+[followerCounter] <--[autoFollowerIncrease]
+followerCounter <-- [clickFollowerIncrease]
+note left of followerCounter
+the goals is to get this counter
+to be equal to the earths population
+and shows the progress
+end note
+[clickFollowerIncrease] -- [upgrades]
+[autoFollowerIncrease] -- [upgrades]
+note left of clickFollowerIncrease
+This is a button that increases the followers each 
+time you clickand has a delay after each 
+click determined by the clickDelay upgrade
+end note
+
+note right of autoFollowerIncrease
+the rate you gain followers passively that increases as you click 
+the clickFollowerIncrease
+end note
+
+note left of [gameManager]
+keeps track of the game status 
+and sends updates to the backend
+end note
+[gameManager] --> [logic]
+[gameManager] <-- [upgrades]
+[gameManager] <-- [followerCounter]
+
+[upgrades] <---> followersPerClick 
+[upgrades] <---> [clickDelay]
+[upgrades] <--> [followersPerSec]
+[upgrades] <--> [genreDiversity]
+[upgrades] <--> [ageDiversity]
+
+
+note top of ageDiversity {
+    possibly not needed as upgrade
+    instead the ages are determined by 
+    content and what ages watch the genre
+}
+frame "ageDiversity"{
+[tableOfAgesFollowing]
+}
+
+frame "genreDiversity"{
+ [music]
+ [comedy]
+ [tutorials]
+ [education]
+ [reviews]
+ [sports]
+ [gaming]
+ [IRLContent]
+}
+frame "followersPerClick"{
+ note right of [RNGSpectrum]
+ each click wil have a random ammount of followers
+ gained from each piece of content you release
+ the range  start from 0-10 followers
+ with the higher numbers being rarer to get
+ lets say 0-2 followers is a 70% chance
+ and the rest from 3-10 is eavenly spread on the remaining
+ 30%
+ this spectrum will move upp as the followersPerClick
+ stat increases 
+ end note 
+}
+note bottom of followersPerClick
+this is basicly followers per upload and increases the 
+passive gain of followers since you have a bigger back log 
+of content that can be recommended to people.
+end note 
+followersPerClick --> followersPerSec
+note bottom of clickDelay
+increase this to create content faster.
+end note
+}
+
+package "backend"{
+    frame "logic"{
+    note left of [demografic] 
+    shows ages following you
+    end note
+    note left of [algorithmFavour]
+    shows if the platform algorithms 
+    recommend and or like your content
+    end note
+    note left of [strategyRecorder]
+        sends all choises to the database
+    end note
+    }
+    database "database"{
+       frame "userData" {
+        [finalTime]
+        [highscore] <.. [strategies]
+        note right of strategies
+            what choises were done and in what order
+        end note
+        [username]
+       }
+    }
+    strategyRecorder --> strategies
+}
+
+
+
+
+

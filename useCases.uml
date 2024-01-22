@@ -1,0 +1,9 @@
+package frontend{
+note left of [followerCounter]{
+    a html element that dates each game loop
+    with the ammount of followers gained from
+    clicking and/or passively
+}
+
+}
+[gamemanager]

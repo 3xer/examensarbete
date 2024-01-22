@@ -1,0 +1,87 @@
+
+package "frontend"{
+note right of [gamemanager]{
+    the part of the program that communicates 
+    between the backend and frontend
+} 
+note left of [followerCounter]{
+    Displays the ammount of followers you currently have 
+    and is the way to see how far you have progressed
+}
+note left of [passiveFollowerIncrease]{
+    Passive followers is obtained as you create more content
+    and as you diversify your reach both in ages and genres
+} 
+note right of [followersPerClick]{
+    A range of followers you get from each click
+    that will increase as you play and upgrade 
+    followerGain 
+}
+
+note right of [clickbutton]{
+    Main gameplay is clicking this button, 
+    it has a delay between each click that can 
+    be decreased with upgrades 
+} 
+[followersPerClick]
+[upgrades]
+[clickDelay]
+[followerGain]
+[genreDiversity]
+[agediversity]
+[gamemanager] <-- followerCounter
+followerCounter <-- passiveFollowerIncrease
+followerCounter <-- clickbutton
+passiveFollowerIncrease <-- upgrades
+clickbutton <-- followersPerClick
+followersPerClick <-- upgrades
+upgrades <-- clickDelay
+upgrades <-- followerGain
+upgrades <-- genreDiversity
+upgrades <-- agediversity
+note left of [upgrades]{
+    this is a list of upgrades for your progression.
+    some just speed up the progress and some are 
+    are required to reach everyone.
+}
+note bottom of [clickDelay]{
+    simulates the process of making content
+    since you cant make content constantly you 
+    have a delay between each click, as you 
+    progress you can make content more efficient
+    and decrease the delay
+}
+note bottom of [followerGain]{
+    sets the quality of your content to increase the
+    ammount of followers you can get both passively and 
+    with each click
+}
+note bottom of [genreDiversity]{
+    gives the option to create content for more genres
+    to reach a more broad audience integral part of 
+    progresson without this you wont reach everyone 
+    and finnish the game.
+}
+
+note bottom of [agediversity]{
+    this tailors content for different ages 
+    so if you make gaming videos you can then make 
+    gaming content that is more for kids, teens,
+    youg adults or older and the same goes for 
+    the other genres
+}
+
+
+}
+package "backend"{
+    frame "logic"{
+        [algorithmFavor]
+        [strategyRecorder]
+
+    }
+    database "database"{
+        [username]
+        [fastestCompletionTime]
+        [orderOfChoises]
+    }
+}

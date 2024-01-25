@@ -1,9 +1,17 @@
 package frontend{
 note left of [followerCounter]{
-    a html element that dates each game loop
+    a html element that updates each game loop
     with the ammount of followers gained from
     clicking and/or passively
 }
 
 }
 [gamemanager]
+package backend{
+    frame logic{
+        note left of [strategyRecorder]{
+            save the order each upgrade is obtained and the ammount
+            of followers the player currently have  
+        }
+    }
+}

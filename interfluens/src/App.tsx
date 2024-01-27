@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import './App.css'
+//import './App.css'
 import MakeContent from './MakeContent'
 import Upgrades from './Upgrades'
 
@@ -14,10 +14,10 @@ function App() {
 
   return (
     <>
-  <div key={'100'} className="">
-      <MakeContent upgrades={upgrades} />
-      <Upgrades appliedUpgrades={handleArrayUpdate} />
-      </div>
+    <div key={'100'} className="">
+        <MakeContent upgrades={upgrades} />
+        <Upgrades appliedUpgrades={handleArrayUpdate} />
+    </div>
 
     </>
   )

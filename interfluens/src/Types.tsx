@@ -4,5 +4,3 @@ export interface appliedUpgrades {
 export interface makeContentProps{
     upgrades: number[]
  }
- 
-

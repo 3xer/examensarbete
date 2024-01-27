@@ -2,7 +2,7 @@ import { FC, useState } from "react"
 //import { upgradeList } from "./Upgrades";
 import { makeContentProps } from "./Types";
 import { upgradeList } from "./fakeDB";
-
+import Upgrades from "./Upgrades";
 
 
 
@@ -17,6 +17,7 @@ const MakeContent:FC<makeContentProps> = ({ upgrades }) => {
     const timer = upgrades[0]
     const max = upgrades[1]
     const handleClick = ()=> {
+        Upgrades()
         setIsClickDisabled(true)
             setTimeout(() => {
             setIsClickDisabled(false)
@@ -34,6 +35,7 @@ const MakeContent:FC<makeContentProps> = ({ upgrades }) => {
             {count}
         </h1>
         <button 
+            id="content-button"
             key={'321'}
             onClick={handleClick}
             disabled={isClickDisabled}

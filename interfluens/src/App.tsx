@@ -4,24 +4,27 @@ import { useState } from 'react'
 import MakeContent from './MakeContent'
 import Upgrades from './Upgrades'
 
+
 function App() {
-  const [upgrades, setUpgrades] = useState<number[]>([]);
+  //const [upgrades, setUpgrades] = useState<number[]>( );
+ 
+  
 
   const handleArrayUpdate = (updatedArray: number[]) =>{
-      setUpgrades(updatedArray)
+      //setUpgrades(updatedArray)
   }
 
 
   return (
     <>
     <div key={'100'} className="">
-        <MakeContent upgrades={upgrades} />
-        <Upgrades appliedUpgrades={handleArrayUpdate} />
+      <MakeContent />
+      <Upgrades appliedUpgrades={handleArrayUpdate} />
     </div>
 
     </>
   )
 } 
-
-
+/*
+ */
 export default App

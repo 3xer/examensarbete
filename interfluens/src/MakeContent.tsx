@@ -1,35 +1,33 @@
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 //import { upgradeList } from "./Upgrades";
-import { makeContentProps } from "./Types";
-import { upgradeList } from "./fakeDB";
-import Upgrades from "./Upgrades";
+
+import { upgradeModifiers } from "./fakeDB";
 
 
 
-const MakeContent:FC<makeContentProps> = ({ upgrades }) => {
-    console.log(upgrades)
-    if (upgrades.length == 0){
-        upgrades[0]= upgradeList[0].value;
-        upgrades[1]= upgradeList[1].value;
-    }
-    const [count, setCount] = useState(0)
-    const [isClickDisabled, setIsClickDisabled] = useState(false);
-    const timer = upgrades[0]
-    const max = upgrades[1]
-    const handleClick = ()=> {
-        Upgrades()
-        setIsClickDisabled(true)
-            setTimeout(() => {
-            setIsClickDisabled(false)
-            setCount(count + Math.floor(Math.random()* (0 - max) + max))
-        },timer), clearTimeout(timer)
+
+const MakeContent:FC = () => {
     
-        
-    }
-
-
     //update count in DB
-    return(
+   
+    const [count, setCount] = useState(0);
+    const [isClickDisabled, setIsClickDisabled] = useState(false);
+    const [timer, setTimer] = useState(1000);
+    const [max, setMax] = useState(2);
+    
+
+   
+//send a intitialization to the backend and fix multi render problem maybe move init to makeContent component     
+    const handleClick = ()=> {
+        setTimer(upgradeModifiers[0])
+        setMax(upgradeModifiers[1])
+        setIsClickDisabled(true)
+           setTimeout(() => {
+           setIsClickDisabled(false)
+           setCount(count + Math.floor(Math.random()* (0 - max) + max))
+       },timer), clearTimeout(timer)
+   }
+    return (
         <>
         <h1 key={'123'}>
             {count}
@@ -44,10 +42,8 @@ const MakeContent:FC<makeContentProps> = ({ upgrades }) => {
         </button>
            
         </>
-
-
     )
-
 }
-export default MakeContent
+
+export default MakeContent;
 

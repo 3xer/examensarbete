@@ -1,28 +1,27 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+//import './App.css'
+import MakeContent from './MakeContent'
+import Upgrades from './Upgrades'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [upgrades, setUpgrades] = useState<number[]>([]);
+
+  const handleArrayUpdate = (updatedArray: number[]) =>{
+      setUpgrades(updatedArray)
+  }
+
 
   return (
     <>
-      <h1>Interfluens</h1>
-      <div className="card">
-        <h1>{count}</h1>
-        <button onClick={() => setCount((count) => count + 1)}>
-          Make Content
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div key={'100'} className="">
+        <MakeContent upgrades={upgrades} />
+        <Upgrades appliedUpgrades={handleArrayUpdate} />
+    </div>
+
     </>
   )
-}
+} 
+
 
 export default App
